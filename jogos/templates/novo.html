@@ -1,0 +1,47 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+    <form class="formularioJogo" action = "{{ url_for('jogos.criar') }}" method="post" enctype="multipart/form-data">
+      <figure class="img-thumbnail col-md-4 formularioImagem">
+        <img class="img-fluid"  src="{{ url_for('jogos.imagem', nome_arquivo='capa_padrao.jpg') }}">
+        <figcaption>
+          <label class="fileContainer">
+            Mudar Capa
+            <input type="file" name="arquivo" accept=".jpg">
+          </label>
+        </figcaption>
+      </figure>
+
+        <fieldset>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Jogo</span>
+            </div>
+            <input type="text" class="form-control" name="title" placeholder="Nome do jogo" aria-label="Nome do jogo" aria-describedby="basic-addon1">
+            <!-- Sempre o parâmetro a ser usado para conectar no backend é o name.-->
+          </div>
+          <div class="input-group mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Categoria</span>
+            </div>
+            <select class="btn btn-primary" name="category" id="category">
+              {% for categ in categories %}
+              <option value="{{ categ['_id'] }}"> {{ categ['category'] }} </option>
+                {% endfor %}
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend ">
+              <span class="input-group-text">Console</span>
+            </div>
+            <input type="text" class="form-control" id="console" name="console" placeholder="Nome do console" aria-label="Nome do console" aria-describedby="basic-addon1">
+          </div>
+          <div class="form-group buttons">
+            <a href="{{ url_for('jogos.index') }}" class="btn btn-danger">Voltar</a>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <!-- <button type="button" id="sweetalert3">Sweet Alert</button> -->
+          </div>
+        </fieldset>
+      </form>
+      
+{% endblock %}

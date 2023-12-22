@@ -1,0 +1,55 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+    <form class="formularioJogo" action = "{{ url_for('jogos.atualizar', id=id) }}" method = "post" enctype="multipart/form-data">
+      <figure class="img-thumbnail col-md-4 formularioImagem">
+        <img class="img-fluid"  src="{{ url_for('jogos.imagem', nome_arquivo=capa_jogo) }}">
+        <figcaption>
+          <label class="fileContainer">
+            Mudar Capa
+            <input type="file" name="arquivo" accept=".jpg">
+          </label>
+        </figcaption>
+      </figure>
+
+        <fieldset>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Jogo</span>
+            </div>
+            <input type="text" class="form-control" name="title" placeholder="Nome do jogo" aria-label="Nome do jogo" aria-describedby="basic-addon1" value="{{ game['title'] }}">
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Categoria</span>
+            </div>
+            <select class="btn btn-primary" name="category" id="category">
+              {% for categ in categories %}
+                {% if game['category'] == categ['_id'] %}
+                <option value="{{ categ['_id'] }}" selected>
+                  {{ categ['category'] }}
+                </option>
+                {% else %}
+                <option value="{{ categ['_id'] }}">
+                  {{ categ['category'] }}
+                </option>
+                {% endif %}
+              
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Console</span>
+            </div>
+            <input type="text" class="form-control" id="console" name="console" placeholder="Nome do console" aria-label="Nome do console" aria-describedby="basic-addon1" value="{{ game['console'] }}">
+          </div>
+          <div class="form-group buttons">
+            <a href="{{ url_for('jogos.index') }}" class="btn btn-danger">Voltar</a>
+            <button id="enviar" type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </fieldset>
+        <input type="hidden" name="current_cover" value="{{ capa_jogo }}">  
+      </form>
+      
+{% endblock %}

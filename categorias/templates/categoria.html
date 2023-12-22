@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+    <form class="formularioJogo" action = "{{ url_for('categorias.criarcategoria') }}" method="post" enctype="multipart/form-data">
+      <figure class="img-thumbnail col-md-4 formularioImagem">
+        <img class="img-fluid"  src="{{ url_for('jogos.imagem', nome_arquivo='Category.png') }}">
+      </figure>
+
+        <fieldset>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Categoria</span>
+            </div>
+            <input type="text" class="form-control" name="category" placeholder="Nome da categoria" aria-label="Nome da categoria" aria-describedby="basic-addon1">
+            <!-- Sempre o parâmetro a ser usado para conectar no backend é o name.-->
+          </div>
+          <div class="form-group buttons">
+            <a href="{{ url_for('categorias.indexcategories') }}" class="btn btn-danger">Voltar</a>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </fieldset>
+      </form>
+      
+{% endblock %}

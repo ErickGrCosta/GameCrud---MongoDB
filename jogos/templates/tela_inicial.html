@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogoteca</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style type="text/css">
+		.banner {
+			background-image: url('../uploads/Game_background.jpg');
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+		}
+		.banner h1 {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.banner p {
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			border-color: #007bff;
+			padding: 0.5rem 1.5rem;
+			font-size: 1.2rem;
+		}
+
+		.btn-primary:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<h1>Seja bem vindo a Jogoteca</h1>
+		<p><em>Que tal poder ter em um só lugar todos os seus jogos favoritos?</em></p>
+        <div class="d-flex">
+            <a href="{{ url_for('jogos.index') }}" class="btn btn-primary mr-3">Lista de Jogos</a>
+            <a href="{{ url_for('categorias.indexcategories') }}" class="btn btn-primary">Lista de categorias</a>
+        </div>
+	</div>
+        
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
